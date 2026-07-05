@@ -1,0 +1,23 @@
+<group name="windows,sysmon,process_creation">
+
+  <rule id="101001" level="8">
+
+    <if_sid>92031</if_sid>
+
+    <field name="data.win.eventdata.commandLine" type="pcre2">
+(?i).*(\\|/)?net1?\.exe\s+user(\s|$).*
+    </field>
+
+    <description>
+Windows Account Discovery - net user command executed
+    </description>
+
+    <mitre>
+      <id>T1087.001</id>
+    </mitre>
+
+    <options>no_full_log</options>
+
+  </rule>
+
+</group>
